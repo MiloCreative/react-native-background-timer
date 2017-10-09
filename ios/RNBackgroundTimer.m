@@ -74,7 +74,8 @@ RCT_EXPORT_METHOD(setTimeout:(int)timeoutId
         if ([self bridge] != nil) {
             [self sendEventWithName:@"backgroundTimer.timeout" body:[NSNumber numberWithInt:timeoutId]];
         }
-        [[UIApplication sharedApplication] endBackgroundTask:task];
+        /*Shouldn't end BG task if we want to keep using this bg task*/
+        //[[UIApplication sharedApplication] endBackgroundTask:task];
     });
     resolve([NSNumber numberWithBool:YES]);
 }
